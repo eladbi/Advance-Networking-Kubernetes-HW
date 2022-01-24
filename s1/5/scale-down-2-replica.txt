@@ -1,0 +1,5 @@
+NAME                      READY   STATUS        RESTARTS   AGE
+simple-7c65f76dff-4vw9x   1/1     Terminating   0          6m46s
+simple-7c65f76dff-drkrq   1/1     Running       0          6m46s
+simple-7c65f76dff-xlfmk   1/1     Terminating   0          6m46s
+simple-7c65f76dff-zqjxm   1/1     Running       0          43m
