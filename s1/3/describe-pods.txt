@@ -1,0 +1,55 @@
+Name:         simple-7c65f76dff-zqjxm
+Namespace:    default
+Priority:     0
+Node:         cluster1-control-plane/172.18.0.2
+Start Time:   Mon, 24 Jan 2022 21:27:01 +0200
+Labels:       app=simple
+              pod-template-hash=7c65f76dff
+Annotations:  <none>
+Status:       Running
+IP:           10.244.0.6
+IPs:
+  IP:           10.244.0.6
+Controlled By:  ReplicaSet/simple-7c65f76dff
+Containers:
+  simple:
+    Container ID:   containerd://790cbce82ca1d1c85a23d84bd62e9f74cf00ab8323f37d7838f13f7415ffe65f
+    Image:          eladbi/simple:latest
+    Image ID:       docker.io/eladbi/simple@sha256:f1e85498acdd4f36294156e6b0c48922b21802c96627a8e0909603804d3a3ce4
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 24 Jan 2022 21:27:03 +0200
+    Ready:          True
+    Restart Count:  0
+    Requests:
+      cpu:  200m
+    Environment:
+      RETURN_VALUE:  simple
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-sndd2 (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-sndd2:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  4m44s  default-scheduler  Successfully assigned default/simple-7c65f76dff-zqjxm to cluster1-control-plane
+  Normal  Pulling    4m44s  kubelet            Pulling image "eladbi/simple:latest"
+  Normal  Pulled     4m43s  kubelet            Successfully pulled image "eladbi/simple:latest" in 1.4496642s
+  Normal  Created    4m43s  kubelet            Created container simple
+  Normal  Started    4m42s  kubelet            Started container simple

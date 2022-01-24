@@ -15,7 +15,7 @@ spec:
         spec:
             containers:
             - name: simple
-              image: yourdockerhubid/simple:latest
+              image: eladbi/simple:latest
               imagePullPolicy: Always # to conserve on pulling can change to not allways pull
               env:
               - name: RETURN_VALUE

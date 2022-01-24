@@ -1,0 +1,204 @@
+{
+  "kind": "Pod",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "simple-7c65f76dff-zqjxm",
+    "generateName": "simple-7c65f76dff-",
+    "namespace": "default",
+    "uid": "230425fb-edf2-4255-80ae-97b00c3325f8",
+    "resourceVersion": "1193",
+    "creationTimestamp": "2022-01-24T19:27:01Z",
+    "labels": {
+      "app": "simple",
+      "pod-template-hash": "7c65f76dff"
+    },
+    "ownerReferences": [
+      {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "simple-7c65f76dff",
+        "uid": "4c3549ab-efaa-41c3-a3f0-6749e5f7671e",
+        "controller": true,
+        "blockOwnerDeletion": true
+      }
+    ],
+    "managedFields": [
+      {
+        "manager": "kube-controller-manager",
+        "operation": "Update",
+        "apiVersion": "v1",
+        "time": "2022-01-24T19:27:01Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {"f:metadata":{"f:generateName":{},"f:labels":{".":{},"f:app":{},"f:pod-template-hash":{}},"f:ownerReferences":{".":{},"k:{\"uid\":\"4c3549ab-efaa-41c3-a3f0-6749e5f7671e\"}":{".":{},"f:apiVersion":{},"f:blockOwnerDeletion":{},"f:controller":{},"f:kind":{},"f:name":{},"f:uid":{}}}},"f:spec":{"f:containers":{"k:{\"name\":\"simple\"}":{".":{},"f:env":{".":{},"k:{\"name\":\"RETURN_VALUE\"}":{".":{},"f:name":{},"f:value":{}}},"f:image":{},"f:imagePullPolicy":{},"f:name":{},"f:ports":{".":{},"k:{\"containerPort\":8080,\"protocol\":\"TCP\"}":{".":{},"f:containerPort":{},"f:name":{},"f:protocol":{}}},"f:resources":{".":{},"f:requests":{".":{},"f:cpu":{}}},"f:terminationMessagePath":{},"f:terminationMessagePolicy":{}}},"f:dnsPolicy":{},"f:enableServiceLinks":{},"f:restartPolicy":{},"f:schedulerName":{},"f:securityContext":{},"f:terminationGracePeriodSeconds":{}}}
+      },
+      {
+        "manager": "kubelet",
+        "operation": "Update",
+        "apiVersion": "v1",
+        "time": "2022-01-24T19:27:03Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {"f:status":{"f:conditions":{"k:{\"type\":\"ContainersReady\"}":{".":{},"f:lastProbeTime":{},"f:lastTransitionTime":{},"f:status":{},"f:type":{}},"k:{\"type\":\"Initialized\"}":{".":{},"f:lastProbeTime":{},"f:lastTransitionTime":{},"f:status":{},"f:type":{}},"k:{\"type\":\"Ready\"}":{".":{},"f:lastProbeTime":{},"f:lastTransitionTime":{},"f:status":{},"f:type":{}}},"f:containerStatuses":{},"f:hostIP":{},"f:phase":{},"f:podIP":{},"f:podIPs":{".":{},"k:{\"ip\":\"10.244.0.6\"}":{".":{},"f:ip":{}}},"f:startTime":{}}}
+      }
+    ]
+  },
+  "spec": {
+    "volumes": [
+      {
+        "name": "kube-api-access-sndd2",
+        "projected": {
+          "sources": [
+            {
+              "serviceAccountToken": {
+                "expirationSeconds": 3607,
+                "path": "token"
+              }
+            },
+            {
+              "configMap": {
+                "name": "kube-root-ca.crt",
+                "items": [
+                  {
+                    "key": "ca.crt",
+                    "path": "ca.crt"
+                  }
+                ]
+              }
+            },
+            {
+              "downwardAPI": {
+                "items": [
+                  {
+                    "path": "namespace",
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "defaultMode": 420
+        }
+      }
+    ],
+    "containers": [
+      {
+        "name": "simple",
+        "image": "eladbi/simple:latest",
+        "ports": [
+          {
+            "name": "http-port",
+            "containerPort": 8080,
+            "protocol": "TCP"
+          }
+        ],
+        "env": [
+          {
+            "name": "RETURN_VALUE",
+            "value": "simple"
+          }
+        ],
+        "resources": {
+          "requests": {
+            "cpu": "200m"
+          }
+        },
+        "volumeMounts": [
+          {
+            "name": "kube-api-access-sndd2",
+            "readOnly": true,
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+          }
+        ],
+        "terminationMessagePath": "/dev/termination-log",
+        "terminationMessagePolicy": "File",
+        "imagePullPolicy": "Always"
+      }
+    ],
+    "restartPolicy": "Always",
+    "terminationGracePeriodSeconds": 30,
+    "dnsPolicy": "ClusterFirst",
+    "serviceAccountName": "default",
+    "serviceAccount": "default",
+    "nodeName": "cluster1-control-plane",
+    "securityContext": {
+      
+    },
+    "schedulerName": "default-scheduler",
+    "tolerations": [
+      {
+        "key": "node.kubernetes.io/not-ready",
+        "operator": "Exists",
+        "effect": "NoExecute",
+        "tolerationSeconds": 300
+      },
+      {
+        "key": "node.kubernetes.io/unreachable",
+        "operator": "Exists",
+        "effect": "NoExecute",
+        "tolerationSeconds": 300
+      }
+    ],
+    "priority": 0,
+    "enableServiceLinks": true,
+    "preemptionPolicy": "PreemptLowerPriority"
+  },
+  "status": {
+    "phase": "Running",
+    "conditions": [
+      {
+        "type": "Initialized",
+        "status": "True",
+        "lastProbeTime": null,
+        "lastTransitionTime": "2022-01-24T19:27:01Z"
+      },
+      {
+        "type": "Ready",
+        "status": "True",
+        "lastProbeTime": null,
+        "lastTransitionTime": "2022-01-24T19:27:03Z"
+      },
+      {
+        "type": "ContainersReady",
+        "status": "True",
+        "lastProbeTime": null,
+        "lastTransitionTime": "2022-01-24T19:27:03Z"
+      },
+      {
+        "type": "PodScheduled",
+        "status": "True",
+        "lastProbeTime": null,
+        "lastTransitionTime": "2022-01-24T19:27:01Z"
+      }
+    ],
+    "hostIP": "172.18.0.2",
+    "podIP": "10.244.0.6",
+    "podIPs": [
+      {
+        "ip": "10.244.0.6"
+      }
+    ],
+    "startTime": "2022-01-24T19:27:01Z",
+    "containerStatuses": [
+      {
+        "name": "simple",
+        "state": {
+          "running": {
+            "startedAt": "2022-01-24T19:27:03Z"
+          }
+        },
+        "lastState": {
+          
+        },
+        "ready": true,
+        "restartCount": 0,
+        "image": "docker.io/eladbi/simple:latest",
+        "imageID": "docker.io/eladbi/simple@sha256:f1e85498acdd4f36294156e6b0c48922b21802c96627a8e0909603804d3a3ce4",
+        "containerID": "containerd://790cbce82ca1d1c85a23d84bd62e9f74cf00ab8323f37d7838f13f7415ffe65f",
+        "started": true
+      }
+    ],
+    "qosClass": "Burstable"
+  }
+}
